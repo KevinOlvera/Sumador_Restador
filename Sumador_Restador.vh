@@ -1,15 +1,15 @@
 module practica_11 ( 
 	a,
 	b,
-	ci,
 	s_r,
+	s_i,
 	l_b,
 	s
 	) ;
 
-input [3:0] a;
-input [3:0] b;
-input  ci;
+input [2:0] a;
+input [2:0] b;
 input  s_r;
+input  s_i;
 inout  l_b;
-inout [3:0] s;
+inout [2:0] s;

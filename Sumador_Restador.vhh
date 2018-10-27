@@ -1,0 +1,10 @@
+ENTITY practica_11 IS
+    PORT (
+	a : in std_logic_vector (3 downto 0) ; 
+	b : in std_logic_vector (3 downto 0) ; 
+	ci : in std_logic  ; 
+	s_r : in std_logic  ; 
+	l_b : inout std_logic  ; 
+	s : inout std_logic_vector (3 downto 0)
+    ) ;
+END practica_11 ;

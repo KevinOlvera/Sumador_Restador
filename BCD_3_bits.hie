@@ -1,0 +1,2 @@
+BCD_3_bits.vhd #Entity bcd_3_bits 5
+BCD_3_bits.vhd #Architecture main bcd_3_bits 12

@@ -1,1 +1,1 @@
--m -yu -e10 -w100 -o2 -ygs -fP -v10 -dc22v10 -ppalc22v10d-25pc -b Sumador_Restador.vhd -u Sumador_Restador.hie 
+-m -yu -e10 -w100 -o2 -ygs -fP -v10 -dc22v10 -ppalc22v10d-25pc -b BCD_3_bits.vhd -u BCD_3_bits.hie 

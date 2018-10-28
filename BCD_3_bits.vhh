@@ -1,0 +1,6 @@
+ENTITY bcd_3_bits IS
+    PORT (
+	i : in std_logic_vector (4 downto 0) ; 
+	o : inout std_logic_vector (9 downto 0)
+    ) ;
+END bcd_3_bits ;

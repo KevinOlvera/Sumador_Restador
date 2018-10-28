@@ -1,6 +1,15 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
+-- A -> Numero A
+-- B -> Numero B
+-- S_R -> Selector de Suma o Resta
+-- S_I -> Selector de A-B o B-A
+-- C_O -> Carry de salida o bit de signo
+-- L_A -> A > B
+-- L_B -> A < B
+-- L -> A = B
+-- S -> Suma
 entity Sumador_Restador is
 	port(
 		A, B: in std_logic_vector (2 downto 0);
@@ -10,6 +19,12 @@ entity Sumador_Restador is
 	);				 					
 end Sumador_Restador;
 
+-- C2A -> 1's Complemento de A
+-- C2B -> 1's Complemento de B
+-- AB -> Bit de salida de A > B
+-- BA -> Bit de salida de A < B
+-- E -> Habilitador del siguiente comparador o A = B
+-- C -> Carry's de la Suma
 architecture main of Sumador_Restador is
 signal C2B, C2A, AB, BA: std_logic_vector (2 downto 0);
 signal E: std_logic_vector (1 downto 0);
@@ -17,6 +32,7 @@ signal C : std_logic_vector (1 downto 0);
 attribute synthesis_off of C : signal is true; 				
 
 begin
+	--Sumador y Restador de 3 bits--
 	C2A(0) <= A(0) xor (S_R and S_I);
 	C2B(0) <= B(0) xor (S_R and not S_I);
 	S(0) <= C2A(0) xor C2B(0) xor S_R;
@@ -32,6 +48,7 @@ begin
 	S(2) <= C2A(2) xor C2B(2) xor C(1);
 	C_O <= (C(1) and (C2A(2) xor C2B(2))) or (C2A(2) and C2B(2));
 	
+	--Comparador de 3 bits--
 	E(1) <= not (A(2) xor B(2));
 	E(0) <= not (A(1) xor B(1)) and E(1);
 	L <= not (A(0) xor B(0)) and E(0);

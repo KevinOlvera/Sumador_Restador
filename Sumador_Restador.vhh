@@ -1,10 +1,10 @@
-ENTITY practica_11 IS
+ENTITY sumador_restador IS
     PORT (
 	a : in std_logic_vector (2 downto 0) ; 
 	b : in std_logic_vector (2 downto 0) ; 
 	s_r : in std_logic  ; 
 	s_i : in std_logic  ; 
-	l_b : inout std_logic  ; 
+	c_o : inout std_logic  ; 
 	s : inout std_logic_vector (2 downto 0)
     ) ;
-END practica_11 ;
+END sumador_restador ;

@@ -17,7 +17,7 @@ Options:    -m -yu -e10 -w100 -o2 -ygs -fP -v10 -dc22v10 -ppalc22v10d-25pc -b Su
 ======================================================================
 
 vhdlfe V6.3 IR 35:  VHDL parser
-Sat Oct 27 16:31:49 2018
+Sat Oct 27 21:18:19 2018
 
 Library 'work' => directory 'lc22v10'
 Linking 'C:\Program Files\Cypress\Warp\bin\std.vhd'.
@@ -30,19 +30,18 @@ vhdlfe:  No errors.
 
 
 tovif V6.3 IR 35:  High-level synthesis
-Sat Oct 27 16:31:49 2018
+Sat Oct 27 21:18:19 2018
 
 Linking 'C:\Program Files\Cypress\Warp\bin\std.vhd'.
 Linking 'C:\Program Files\Cypress\Warp\lib\common\cypress.vhd'.
 Linking 'C:\Program Files\Cypress\Warp\lib\common\work\cypress.vif'.
 Linking 'C:\Program Files\Cypress\Warp\lib\ieee\work\stdlogic.vif'.
-Sumador_Restador.vhd (line 22, col 6):  Warning: (W460) 'l_b' unassigned in arch. 'main' of practica_11.
 
-tovif:  No errors.  1 warning.
+tovif:  No errors.
 
 
 topld V6.3 IR 35:  Synthesis and optimization
-Sat Oct 27 16:31:49 2018
+Sat Oct 27 21:18:19 2018
 
 Linking 'C:\Program Files\Cypress\Warp\bin\std.vhd'.
 Linking 'C:\Program Files\Cypress\Warp\lib\common\cypress.vhd'.
@@ -52,12 +51,8 @@ Linking 'C:\Program Files\Cypress\Warp\lib\ieee\work\stdlogic.vif'.
 ----------------------------------------------------------
 Detecting unused logic.
 ----------------------------------------------------------
-    User names
-	c_2
 
 
-Deleted 1 User equation or component.
-Deleted 0 Synthesized equations/components.
 
 ------------------------------------------------------
 Alias Detection
@@ -86,14 +81,14 @@ Alias Detection
 ------------------------------------------------------
 Aliased 0 equations, 0 wires.
 ------------------------------------------------------
-Created 21 PLD nodes.
+Created 20 PLD nodes.
 
 topld:  No errors.
 
 ----------------------------------------------------------------------------
 PLD Optimizer Software:       DSGNOPT.EXE    31/03/2000  [v4.02 ] 6.3 IR 35
 
-DESIGN HEADER INFORMATION  (16:31:51)
+DESIGN HEADER INFORMATION  (21:18:20)
 
 Input File(s): Sumador_Restador.pla
 Device       : C22V10
@@ -112,11 +107,11 @@ Completed Successfully
 ----------------------------------------------------------------------------
 PLD Optimizer Software:       DSGNOPT.EXE    31/03/2000  [v4.02 ] 6.3 IR 35
 
-OPTIMIZATION OPTIONS       (16:31:51)
+OPTIMIZATION OPTIONS       (21:18:20)
 
 Messages:
   Information: Optimizing logic using best output polarity for signals:
-         c_0 c_1 s(0) s(1) s(2)
+         c_0 c_1 c_o s(0) s(1) s(2)
 
 
 
@@ -139,7 +134,7 @@ Completed Successfully
 ----------------------------------------------------------------------------
 PLD Optimizer Software:       DSGNOPT.EXE    31/03/2000  [v4.02 ] 6.3 IR 35
 
-OPTIMIZATION OPTIONS       (16:31:51)
+OPTIMIZATION OPTIONS       (21:18:20)
 
 Messages:
   Information: Optimizing Banked Preset/Reset requirements.
@@ -153,56 +148,51 @@ Completed Successfully
 PLD Compiler Software:        PLA2JED.EXE    31/03/2000  [v4.02 ] 6.3 IR 35
 
 <CYPRESSTAG name="Equations" icon=FILE_RPT_EQUATION>
-DESIGN EQUATIONS           (16:31:51)
+DESIGN EQUATIONS           (21:18:20)
 </CYPRESSTAG>
 
     c_0 =
           /a(0) * s_i * s_r 
-        + a(0) * /s_i * s_r 
-        + a(0) * b(0) * /s_r 
-        + /b(0) * s_r 
+        + /b(0) * /s_i * s_r 
+        + a(0) * b(0) 
 
     c_1 =
-          /a(1) * c_0 * s_i * s_r 
-        + /a(1) * /b(1) * s_i * s_r 
+          /a(1) * b(1) * s_i * s_r 
+        + /a(1) * /b(1) * c_0 * s_r 
         + a(1) * /b(1) * /s_i * s_r 
-        + /b(1) * c_0 * s_r 
-        + a(1) * c_0 * /s_i 
+        + a(1) * b(1) * c_0 
         + b(1) * c_0 * /s_r 
         + a(1) * c_0 * /s_r 
         + a(1) * b(1) * /s_r 
 
+    c_o =
+          /a(2) * b(2) * s_i * s_r 
+        + /a(2) * /b(2) * c_1 * s_r 
+        + a(2) * /b(2) * /s_i * s_r 
+        + a(2) * b(2) * c_1 
+        + b(2) * c_1 * /s_r 
+        + a(2) * c_1 * /s_r 
+        + a(2) * b(2) * /s_r 
+
     s(0) =
-          a(0) * b(0) * s_i * s_r 
-        + /a(0) * /b(0) * s_i * s_r 
-        + /a(0) * b(0) * /s_i 
-        + a(0) * /b(0) * /s_i 
-        + /a(0) * b(0) * /s_r 
-        + a(0) * /b(0) * /s_r 
+          /a(0) * b(0) 
+        + a(0) * /b(0) 
 
     s(1) =
-          /a(1) * b(1) * c_0 * /s_i * s_r 
-        + a(1) * /b(1) * c_0 * /s_i * s_r 
-        + a(1) * b(1) * /c_0 * /s_i * s_r 
-        + /a(1) * /b(1) * /c_0 * /s_i * s_r 
-        + a(1) * b(1) * c_0 * s_i 
-        + /a(1) * /b(1) * c_0 * s_i 
-        + /a(1) * b(1) * /c_0 * s_i 
-        + a(1) * /b(1) * /c_0 * s_i 
+          /a(1) * b(1) * c_0 * s_r 
+        + a(1) * /b(1) * c_0 * s_r 
+        + a(1) * b(1) * /c_0 * s_r 
+        + /a(1) * /b(1) * /c_0 * s_r 
         + a(1) * b(1) * c_0 * /s_r 
         + /a(1) * /b(1) * c_0 * /s_r 
         + /a(1) * b(1) * /c_0 * /s_r 
         + a(1) * /b(1) * /c_0 * /s_r 
 
     s(2) =
-          /a(2) * b(2) * c_1 * /s_i * s_r 
-        + a(2) * /b(2) * c_1 * /s_i * s_r 
-        + a(2) * b(2) * /c_1 * /s_i * s_r 
-        + /a(2) * /b(2) * /c_1 * /s_i * s_r 
-        + a(2) * b(2) * c_1 * s_i 
-        + /a(2) * /b(2) * c_1 * s_i 
-        + /a(2) * b(2) * /c_1 * s_i 
-        + a(2) * /b(2) * /c_1 * s_i 
+          /a(2) * b(2) * c_1 * s_r 
+        + a(2) * /b(2) * c_1 * s_r 
+        + a(2) * b(2) * /c_1 * s_r 
+        + /a(2) * /b(2) * /c_1 * s_r 
         + a(2) * b(2) * c_1 * /s_r 
         + /a(2) * /b(2) * c_1 * /s_r 
         + /a(2) * b(2) * /c_1 * /s_r 
@@ -213,7 +203,7 @@ Completed Successfully
 ----------------------------------------------------------------------------
 PLD Compiler Software:        PLA2JED.EXE    31/03/2000  [v4.02 ] 6.3 IR 35
 
-DESIGN RULE CHECK          (16:31:51)
+DESIGN RULE CHECK          (21:18:20)
 
 Messages:
                  None.
@@ -227,7 +217,7 @@ Completed Successfully
 PLD Compiler Software:        PLA2JED.EXE    31/03/2000  [v4.02 ] 6.3 IR 35
 
 <CYPRESSTAG name="Pinout" icon=FILE_RPT_PINOUT>
-PINOUT INFORMATION   (16:31:51)
+PINOUT INFORMATION   (21:18:20)
 </CYPRESSTAG>
 Messages:
   Information: Checking for duplicate NODE logic.
@@ -237,16 +227,16 @@ Messages:
                                  C22V10
                  __________________________________________
            b(2) =| 1|                                  |24|* not used       
-           a(2) =| 2|                                  |23|= s(0)           
-            s_r =| 3|                                  |22|* not used       
-            s_i =| 4|                                  |21|= s(1)           
+           a(2) =| 2|                                  |23|= s(1)           
+            s_r =| 3|                                  |22|= (c_1)          
+            s_i =| 4|                                  |21|= s(0)           
            b(1) =| 5|                                  |20|* not used       
            b(0) =| 6|                                  |19|* not used       
            a(1) =| 7|                                  |18|* not used       
            a(0) =| 8|                                  |17|* not used       
-       not used *| 9|                                  |16|= s(2)           
-       not used *|10|                                  |15|= (c_0)          
-       not used *|11|                                  |14|= (c_1)          
+       not used *| 9|                                  |16|= (c_0)          
+       not used *|10|                                  |15|= c_o            
+       not used *|11|                                  |14|= s(2)           
        not used *|12|                                  |13|* not used       
                  __________________________________________
 
@@ -259,7 +249,7 @@ Completed Successfully
 PLD Compiler Software:        PLA2JED.EXE    31/03/2000  [v4.02 ] 6.3 IR 35
 
 <CYPRESSTAG name="Utilization" icon=FILE_RPT_UTILIZATION>
-RESOURCE UTILIZATION (16:31:51)
+RESOURCE UTILIZATION (21:18:20)
 </CYPRESSTAG>
   Information: Macrocell Utilization.
 
@@ -267,46 +257,46 @@ RESOURCE UTILIZATION (16:31:51)
                  ______________________________________
                  | Dedicated Inputs   |    7  |   11  |
                  | Clock/Inputs       |    1  |    1  |
-                 | I/O Macrocells     |    5  |   10  |
+                 | I/O Macrocells     |    6  |   10  |
                  ______________________________________
-                                          13  /   22   = 59  %
+                                          14  /   22   = 63  %
 
 
   Information: Output Logic Product Term Utilization.
 
                   Node#  Output Signal Name  Used   Max
                  ________________________________________
-                 | 14  |  c_1             |   8  |   8  |
-                 | 15  |  c_0             |   4  |  10  |
-                 | 16  |  s(2)            |  12  |  12  |
+                 | 14  |  s(2)            |   8  |   8  |
+                 | 15  |  c_o             |   7  |  10  |
+                 | 16  |  c_0             |   3  |  12  |
                  | 17  |  Unused          |   0  |  14  |
                  | 18  |  Unused          |   0  |  16  |
                  | 19  |  Unused          |   0  |  16  |
                  | 20  |  Unused          |   0  |  14  |
-                 | 21  |  s(1)            |  12  |  12  |
-                 | 22  |  Unused          |   0  |  10  |
-                 | 23  |  s(0)            |   6  |   8  |
+                 | 21  |  s(0)            |   2  |  12  |
+                 | 22  |  c_1             |   7  |  10  |
+                 | 23  |  s(1)            |   8  |   8  |
                  | 25  |  Unused          |   0  |   1  |
                  ________________________________________
-                                             42  / 121   = 34  %
+                                             35  / 121   = 28  %
 
 
 Completed Successfully  
 ----------------------------------------------------------------------------
 PLD Compiler Software:        PLA2JED.EXE    31/03/2000  [v4.02 ] 6.3 IR 35
 
-JEDEC ASSEMBLE             (16:31:51)
+JEDEC ASSEMBLE             (21:18:20)
 
 Messages:
   Information: Output file 'Sumador_Restador.pin' created.
   Information: Output file 'Sumador_Restador.jed' created.
 
   Usercode:    
-  Checksum:    F728
+  Checksum:    D914
 
 
 
 Summary:
                  Error Count = 0      Warning Count = 0
 
-Completed Successfully at 16:31:51
+Completed Successfully at 21:18:20

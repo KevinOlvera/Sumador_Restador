@@ -5,6 +5,9 @@ ENTITY sumador_restador IS
 	s_r : in std_logic  ; 
 	s_i : in std_logic  ; 
 	c_o : inout std_logic  ; 
+	l_a : inout std_logic  ; 
+	l_b : inout std_logic  ; 
+	l : inout std_logic  ; 
 	s : inout std_logic_vector (2 downto 0)
     ) ;
 END sumador_restador ;

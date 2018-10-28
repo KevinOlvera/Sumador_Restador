@@ -5,13 +5,14 @@ entity Sumador_Restador is
 	port(
 		A, B: in std_logic_vector (2 downto 0);
 		S_R, S_I: in std_logic;
-		C_O: out std_logic;
+		C_O, L_A, L_B, L: out std_logic;
 		S: out std_logic_vector (2 downto 0)
 	);				 					
 end Sumador_Restador;
 
 architecture main of Sumador_Restador is
-signal C2B, C2A: std_logic_vector (2 downto 0);
+signal C2B, C2A, AB, BA: std_logic_vector (2 downto 0);
+signal E: std_logic_vector (1 downto 0);
 signal C : std_logic_vector (1 downto 0);
 attribute synthesis_off of C : signal is true; 				
 
@@ -29,5 +30,20 @@ begin
 	C2A(2) <= A(2) xor (S_R and S_I);
 	C2B(2) <= B(2) xor (S_R and not S_I);
 	S(2) <= C2A(2) xor C2B(2) xor C(1);
-	C_O <= (C(1) and (C2A(2) xor C2B(2))) or (C2A(2) and C2B(2));		
+	C_O <= (C(1) and (C2A(2) xor C2B(2))) or (C2A(2) and C2B(2));
+	
+	E(1) <= not (A(2) xor B(2));
+	E(0) <= not (A(1) xor B(1)) and E(1);
+	L <= not (A(0) xor B(0)) and E(0);
+
+	AB(2) <= A(2) and not B(2); 
+	AB(1) <= A(1) and not B(1) and E(1);
+	AB(0) <= A(0) and not B(0) and E(0);
+
+	BA(2) <= not A(2) and B(2);
+	BA(1) <= not A(1) and B(1) and E(1);
+	BA(0) <= not A(0) and B(0) and E(0);
+
+	L_A <= AB(2) or AB(1) or AB(0);
+	L_B <= BA(2) or BA(1) or BA(0);
 end main;

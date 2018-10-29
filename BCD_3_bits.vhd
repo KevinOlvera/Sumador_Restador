@@ -14,7 +14,15 @@ begin
     --LCD Derecho
     BCD: process (I) begin
         case I is
-			------SCSSSS---------------------------
+            --Para los bits entrada
+            -- S_R Selector de suma o resta
+            -- C_O Carry de salida o bit de signo
+            -- S2 Suma 2
+            -- S1 Suma 1
+            -- S2 Suma 0
+            --Para los bits de salida
+            -- b,c,a,b,c,d,e,f,g,p 
+            ----------------------------------------
             when "11000" => O <= "0011111100"; --  0
             when "11001" => O <= "0001100000"; --  1
             when "11010" => O <= "0011011010"; --  2
